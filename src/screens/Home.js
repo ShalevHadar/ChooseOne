@@ -4,7 +4,7 @@ import { Text, StyleSheet, View, Button, Pressable } from "react-native";
 
 function HomeScreen({ navigation }) {
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+    <View style={styles.homeStyle}>
       <Text style={styles.textStyle}>Welcome to ChooseOne</Text>
 
       <LottieView
@@ -27,12 +27,20 @@ function HomeScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
+  homeStyle: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
   homeImage: {
     width: 230,
     height: 330,
   },
   textStyle: {
-    fontSize: 20,
+    fontSize: 22,
+    lineHeight: 21,
+    fontWeight: "bold",
+    letterSpacing: 0.25,
   },
   button: {
     alignItems: "center",
@@ -41,7 +49,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     borderRadius: 4,
     elevation: 3,
-    backgroundColor: "black",
+    backgroundColor: "#064663",
   },
   text: {
     fontSize: 16,
