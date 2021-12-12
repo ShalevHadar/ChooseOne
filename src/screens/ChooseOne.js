@@ -1,37 +1,35 @@
 import React from "react";
 import { useState } from "react";
-import { Text, StyleSheet, View, FlatList, Button } from "react-native";
-import SpinningWheel from "../component/SpinningWheel";
+import { StyleSheet, View, FlatList, ActivityIndicator } from "react-native";
+import AnimatedCircle from "../component/AnimatedCircle";
 
 function ChooseOne({ navigation }) {
+  const [touchArray, setTouchArray] = useState([]);
   const [isPress, setIsPress] = useState(false);
   return (
     <View
-      style={styles.homeStyle}
-      onTouchStart={(e) => {
-        console.log(e.nativeEvent.identifier);
+      onStartShouldSetResponder={(event) => {
+        setTouchArray(event.nativeEvent.touches);
         setIsPress(true);
       }}
+      style={styles.homeStyle}
       onTouchEnd={(e) => {
+        //console.log(touchArray);
+        setTouchArray([]);
         setIsPress(false);
       }}
     >
-      {/* <FlatList
-        keyExtractor={(item) => item}
-        data={position}
+      <FlatList
+        keyExtractor={(item) => item.identifier}
+        data={touchArray}
         renderItem={({ item }) => {
           return (
             <View>
-              <Text>yo</Text>
+              {isPress ? <AnimatedCircle itemId={item.identifier} /> : null}
             </View>
           );
         }}
-      /> */}
-      {isPress ? (
-        <>
-          <SpinningWheel />
-        </>
-      ) : null}
+      />
     </View>
   );
 }
@@ -44,10 +42,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "black",
   },
-  SquareStyle: {
-    height: 100,
-    width: 100,
-  },
+  wheelStyle: {},
 });
 
 export default ChooseOne;
