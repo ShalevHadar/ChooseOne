@@ -5,23 +5,29 @@ import { circles } from "./Photos";
 
 const AnimatedCircle = (props) => {
   const colors = ["red", "green", "blue", "orange", "black"];
-  const [item, setItem] = useState();
+  const [item, setItem] = useState(-1);
+  const [colorStates, setColorStates] = useState([
+    circles.red.uri,
+    circles.green.uri,
+    circles.blue.uri,
+    circles.orange.uri,
+    circles.black.uri,
+  ]);
 
   useEffect(() => {
     const { itemId } = props;
     setItem(itemId);
   }, []);
 
-  let colorCircle = `circles.${colors[item - 1]}.uri`;
-  console.log(colorCircle);
-
   return (
     <View>
-      <AnimatedLottieView
-        source={colorCircle}
-        style={styles.circleStyle}
-        autoPlay
-      />
+      {item === -1 ? null : (
+        <AnimatedLottieView
+          source={colorStates[item - 1]}
+          style={styles.circleStyle}
+          autoPlay
+        />
+      )}
     </View>
   );
 };
