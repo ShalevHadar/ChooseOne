@@ -1,6 +1,6 @@
 import LottieView from "lottie-react-native";
 import React from "react";
-import { Text, StyleSheet, View, Button, Pressable } from "react-native";
+import { Text, StyleSheet, View, Pressable } from "react-native";
 
 function HomeScreen({ navigation }) {
   return (
@@ -11,8 +11,6 @@ function HomeScreen({ navigation }) {
         style={styles.homeImage}
         source={require("../../assets/lottie/19934-flirting-dog.json")}
         autoPlay
-        // loop={false}
-        // speed={0.5}
       />
       <View style={styles.position}>
         <Pressable

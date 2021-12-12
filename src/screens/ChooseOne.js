@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { StyleSheet, View, FlatList, ActivityIndicator } from "react-native";
+import { StyleSheet, View, FlatList, Pressable } from "react-native";
 import AnimatedCircle from "../component/AnimatedCircle";
 
 function ChooseOne({ navigation }) {
@@ -14,7 +14,8 @@ function ChooseOne({ navigation }) {
       }}
       style={styles.homeStyle}
       onTouchEnd={(e) => {
-        //console.log(touchArray);
+        const { pageX, pageY } = touchArray;
+        console.log(pageX, pageY);
         setTouchArray([]);
         setIsPress(false);
       }}
@@ -23,8 +24,18 @@ function ChooseOne({ navigation }) {
         keyExtractor={(item) => item.identifier}
         data={touchArray}
         renderItem={({ item }) => {
+          const { pageX, pageY } = item;
+          console.log(pageX, pageY);
           return (
-            <View>
+            <View
+              style={[
+                {
+                  position: "absolute",
+                  left: item.pageX - 85,
+                  top: item.pageY - 85,
+                },
+              ]}
+            >
               {isPress ? <AnimatedCircle itemId={item.identifier} /> : null}
             </View>
           );
@@ -37,13 +48,10 @@ function ChooseOne({ navigation }) {
 const styles = StyleSheet.create({
   homeStyle: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
     borderWidth: 1,
+    margin: 0,
     borderColor: "black",
-    flexDirection: "row",
   },
-  wheelStyle: {},
 });
 
 export default ChooseOne;
