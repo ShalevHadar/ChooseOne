@@ -34,8 +34,8 @@ const AnimatedCircle = (props) => {
 
 const styles = StyleSheet.create({
   circleStyle: {
-    width: 170,
-    height: 170,
+    width: 200,
+    height: 200,
   },
 });
 
