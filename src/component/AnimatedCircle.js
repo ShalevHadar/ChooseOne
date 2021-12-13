@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { circles } from "./Photos";
 
-const AnimatedCircle = (props) => {
+const AnimatedCircle = ({ itemId }) => {
   const colors = ["red", "green", "blue", "orange", "black"];
   const [item, setItem] = useState(-1);
   const [colorStates, setColorStates] = useState([
@@ -15,7 +15,6 @@ const AnimatedCircle = (props) => {
   ]);
 
   useEffect(() => {
-    const { itemId } = props;
     setItem(itemId);
   }, []);
 

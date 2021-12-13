@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, View, FlatList, Text } from "react-native";
 import AnimatedCircle from "../component/AnimatedCircle";
+import Winner from "../component/Winner";
 
 function ChooseOne({ navigation }) {
   const [touchArray, setTouchArray] = useState([]);
   const [isPress, setIsPress] = useState(false);
-  const [timer, setTimer] = useState(5);
+  const [timer, setTimer] = useState();
+  const [winner, setWinner] = useState(-1);
+
+  const sendWinner = () => {
+    console.log("Sending Winner");
+  };
 
   useEffect(() => {
     if (timer === 0) {
-      console.log("Done!");
+      setWinner(Math.floor(Math.random() * touchArray.length));
     }
 
     if (!timer || isPress === false) return;
@@ -22,13 +28,12 @@ function ChooseOne({ navigation }) {
   }, [timer, isPress]);
 
   const startTimer = () => {
-    console.log("start");
-    setTimer(5);
+    setTimer(3);
   };
 
   const stopTimer = () => {
-    setTimer(5);
-    console.log("stop");
+    setTimer(3);
+    setWinner(-1);
   };
 
   return (
@@ -55,19 +60,29 @@ function ChooseOne({ navigation }) {
             const { pageX, pageY } = item;
             return (
               <View
-                style={[
-                  {
-                    position: "absolute",
-                    left: item.pageX - 100,
-                    top: item.pageY - 100,
-                  },
-                ]}
+                style={{
+                  position: "absolute",
+                  left: item.pageX - 100,
+                  top: item.pageY - 100,
+                }}
               >
                 {isPress ? <AnimatedCircle itemId={item.identifier} /> : null}
               </View>
             );
           }}
         />
+
+        {winner >= 0 ? (
+          <View
+            style={{
+              position: "absolute",
+              alignSelf: "center",
+              top: 280,
+            }}
+          >
+            <Winner winner={winner} />
+          </View>
+        ) : null}
         {isPress ? (
           <View
             style={{
