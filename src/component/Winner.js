@@ -3,7 +3,7 @@ import { Text, StyleSheet, View } from "react-native";
 import { circles } from "./Photos";
 
 const Winner = ({ winner }) => {
-  const colors = ["red", "green", "blue", "brown", "black"];
+  const colors = ["Red", "Green", "Blue", "Brown", "Black"];
   const [colorStates, setColorStates] = useState([
     circles.red.hexCode,
     circles.green.hexCode,
