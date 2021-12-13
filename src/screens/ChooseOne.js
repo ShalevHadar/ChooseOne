@@ -3,15 +3,11 @@ import { StyleSheet, View, FlatList, Text } from "react-native";
 import AnimatedCircle from "../component/AnimatedCircle";
 import Winner from "../component/Winner";
 
-function ChooseOne({ navigation }) {
+function ChooseOne() {
   const [touchArray, setTouchArray] = useState([]);
   const [isPress, setIsPress] = useState(false);
   const [timer, setTimer] = useState();
   const [winner, setWinner] = useState(-1);
-
-  const sendWinner = () => {
-    console.log("Sending Winner");
-  };
 
   useEffect(() => {
     if (timer === 0) {
