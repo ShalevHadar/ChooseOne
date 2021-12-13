@@ -4,13 +4,12 @@ import { StyleSheet, View } from "react-native";
 import { circles } from "./Photos";
 
 const AnimatedCircle = ({ itemId }) => {
-  const colors = ["red", "green", "blue", "orange", "black"];
   const [item, setItem] = useState(-1);
   const [colorStates, setColorStates] = useState([
     circles.red.uri,
     circles.green.uri,
     circles.blue.uri,
-    circles.orange.uri,
+    circles.brown.uri,
     circles.black.uri,
   ]);
 

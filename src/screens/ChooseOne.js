@@ -73,25 +73,13 @@ function ChooseOne({ navigation }) {
         />
 
         {winner >= 0 ? (
-          <View
-            style={{
-              position: "absolute",
-              alignSelf: "center",
-              top: 280,
-            }}
-          >
+          <View style={styles.middleStyle1}>
             <Winner winner={winner} />
           </View>
         ) : null}
         {isPress ? (
-          <View
-            style={{
-              position: "absolute",
-              alignSelf: "center",
-              top: 280,
-            }}
-          >
-            <Text style={{ fontSize: 85, fontWeight: "bold" }}>{timer}</Text>
+          <View style={styles.middleStyle2}>
+            <Text style={styles.fontStyle}>{timer}</Text>
           </View>
         ) : null}
       </View>
@@ -103,6 +91,21 @@ const styles = StyleSheet.create({
   homeStyle: {
     flex: 1,
     backgroundColor: "white",
+  },
+  middleStyle1: {
+    position: "absolute",
+    alignSelf: "center",
+    top: 200,
+  },
+  middleStyle2: {
+    position: "absolute",
+    alignSelf: "center",
+    top: 280,
+  },
+
+  fontStyle: {
+    fontSize: 85,
+    fontWeight: "bold",
   },
 });
 

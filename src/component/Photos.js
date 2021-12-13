@@ -11,7 +11,7 @@ const circles = {
     uri: require("../../assets/lottie/blueCircle.json"),
     hexCode: "#c4eaf5",
   },
-  orange: {
+  brown: {
     uri: require("../../assets/lottie/orangeCircle.json"),
     hexCode: "#e1d8c3",
   },

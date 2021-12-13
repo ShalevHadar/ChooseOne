@@ -3,23 +3,21 @@ import { Text, StyleSheet, View } from "react-native";
 import { circles } from "./Photos";
 
 const Winner = ({ winner }) => {
-  const colors = ["red", "green", "blue", "orange", "black"];
+  const colors = ["red", "green", "blue", "brown", "black"];
   const [colorStates, setColorStates] = useState([
     circles.red.hexCode,
     circles.green.hexCode,
     circles.blue.hexCode,
-    circles.orange.hexCode,
+    circles.brown.hexCode,
     circles.black.hexCode,
   ]);
   let winnerColor = colorStates[winner];
 
   return (
-    <View style={{ ...styles.container, backgroundColor: winnerColor }}>
-      <Text>{colors[winner]} Wins !</Text>
+    <View style={{ backgroundColor: winnerColor }}>
+      <Text style={{ fontSize: 60 }}>{colors[winner]} Wins !</Text>
     </View>
   );
 };
-
-const styles = (props) => StyleSheet.create({});
 
 export default Winner;
